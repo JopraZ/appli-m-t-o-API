@@ -9,7 +9,7 @@ const elements = {
     error: document.getElementById("error"),
     errorMessage: document.getElementById("error-message"),
     cityName: document.getElementById("city-name"),
-    cureentDate: document.getElementById("current-date"),
+    currentDate: document.getElementById("current-date"),
     weatherIcon: document.getElementById("weather-icon"),
     curretnTemp: document.getElementById("current-temp"),
     weatherDescription: document.getElementById("weather-description"),
