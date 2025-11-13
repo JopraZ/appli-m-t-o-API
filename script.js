@@ -69,3 +69,19 @@ function displayWeatherData(data) {
 
     showWeatherCard();
 }
+
+async function handleSearch() {
+    const city = elements.cityInput.ariaValueMax.trim();
+
+    if (!city) {
+        showError("Veuillez rentrer une ville")
+        return;
+    }
+
+    const weatherdata = await getWeatherData(city);
+
+    if (weatherdata) {
+        displayWeatherData(weatherdata);
+        elements.cityInput.value = "";
+    }
+}
