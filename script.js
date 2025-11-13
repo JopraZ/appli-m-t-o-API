@@ -19,3 +19,4 @@ const elements = {
     historyList: document.getElementById("history-list")
 };
 
+let searckHistory = JSON.parse(localStorage.getItem("weatherHistory")) || [];
