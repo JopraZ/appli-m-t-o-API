@@ -20,3 +20,25 @@ const elements = {
 };
 
 let searckHistory = JSON.parse(localStorage.getItem("weatherHistory")) || [];
+
+async function getWeatherData(city) {
+    showLoading();
+    hideError();
+    hideWeatherCard();
+
+    try {
+        const response = await fetch(
+            `${BASE_URL}?q=${city}&appid=${API_KEY}&unit=metric&lang=fr`
+        );
+
+        if (!response.ok) {
+            throw new Error ("Ville non trouvé");
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        showError(error.message);
+        return null;
+    }
+}
