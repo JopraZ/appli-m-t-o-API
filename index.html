@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Météo Actuelle</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌤️ Météo Actuelle</h1>
+            <div class="search-container">
+                <input type="text" id="city-input" placeholder="Entrez une ville...">
+                <button id="search-btn">🔍 Rechercher</button>
+            </div>
+        </header>
+
+        <main>
+            <!-- État de chargement -->
+            <div id="loading" class="hidden">
+                <p>Chargement en cours...</p>
+            </div>
+
+            <!-- Message d'erreur -->
+            <div id="error" class="hidden">
+                <p id="error-message"></p>
+            </div>
+
+            <!-- Carte météo -->
+            <div id="weather-card" class="weather-card hidden">
+                <div class="city-info">
+                    <h2 id="city-name"></h2>
+                    <p id="current-date"></p>
+                </div>
+                
+                <div class="weather-main">
+                    <img id="weather-icon" src="" alt="Icone météo">
+                    <div class="temperature">
+                        <span id="current-temp"></span>
+                        <span id="weather-description"></span>
+                    </div>
+                </div>
+
+                <div class="weather-details">
+                    <div class="detail">
+                        <span>💧 Humidité</span>
+                        <span id="humidity"></span>
+                    </div>
+                    <div class="detail">
+                        <span>💨 Vent</span>
+                        <span id="wind-speed"></span>
+                    </div>
+                    <div class="detail">
+                        <span>🌡️ Ressenti</span>
+                        <span id="feels-like"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Historique des recherches -->
+            <div id="search-history" class="search-history">
+                <h3>Recherches récentes</h3>
+                <div id="history-list"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
