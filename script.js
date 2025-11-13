@@ -11,7 +11,7 @@ const elements = {
     cityName: document.getElementById("city-name"),
     currentDate: document.getElementById("current-date"),
     weatherIcon: document.getElementById("weather-icon"),
-    curretnTemp: document.getElementById("current-temp"),
+    currentTemp: document.getElementById("current-temp"),
     weatherDescription: document.getElementById("weather-description"),
     humidity: document.getElementById("humidity"),
     windSpeed: document.getElementById("wind-speed"),
@@ -41,4 +41,31 @@ async function getWeatherData(city) {
         showError(error.message);
         return null;
     }
+}
+
+function displayWeatherData(data) {
+    if (!data) return;
+
+    elements.cityName.textContent = `${data.name},${data.sys.country}`;
+    elements.currentDate.textContent = new Date().toLocaleDateString("fr-FR" , {
+        weekday: "long",
+        year: "numeric",
+        month:"long",
+        day:"numeric",
+    });
+
+    elements.currentTemp.textContent `${Math.round(data.main.temp)}°C`;
+    elements.weatherDescription.textContent = data.weather[0].description;
+
+    elements.weatherIcon.src = `https://openweathermap.org/img/wn/
+    ${data.weather[0].icon}@2x.png`;
+    elements.weatherIcon.alt = data.weather[0].description;
+
+    elements.humidity.textContent = `${data.main.humidity}%`;
+    elements.windSpeed.textContent = `${Math.round(data.wind.speed*3.6)}km/h`;
+    elements.feelsLike.textContent = `${Math.round(data.main.feels_like)}°C`;
+
+    addToHistory(data.name);
+
+    showWeatherCard();
 }
